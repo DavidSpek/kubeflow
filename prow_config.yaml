@@ -84,6 +84,14 @@ workflows:
       - components/crud-web-apps/common/backend/*
       - components/crud-web-apps/tensorboards/*
     kwargs: {}
+  # Create and push notebook-server-rstudio OCI image to ECR
+  - py_func: kubeflow.kubeflow.ci.notebook_servers.notebook_server_rstudio_tests.create_workflow
+    name: nb-rstudio
+    job_types:
+      - presubmit
+    include_dirs:
+      - components/example-notebook-servers/rstudio/*
+    kwargs: {}
 #######################################
 # Postsubmit jobs
 #######################################
@@ -156,4 +164,12 @@ workflows:
     include_dirs:
       - components/common/*
       - components/tensorboard-controller/*
+    kwargs: {}
+  # Create and push notebook-server-rstudio OCI image to ECR
+  - py_func: kubeflow.kubeflow.cd.notebook_servers.notebook_server_rstudio.create_workflow
+    name: nb-rstudio
+    job_types:
+      - postsubmit
+    include_dirs:
+      - components/example-notebook-servers/rstudio/*
     kwargs: {}

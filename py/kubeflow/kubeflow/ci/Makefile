@@ -86,3 +86,12 @@ check-local-twa-tests:
 check-prod-twa-tests:
 	PYTHONPATH=${PYTHONPATH} \
 	python twa_tests_runner.py
+
+check-local-notebook-server-rstudio-tests:
+	PYTHONPATH=${PYTHONPATH} \
+	LOCAL_TESTING=True \
+	python notebook_servers/notebook_server_rstudio_tests_runner.py
+
+check-prod-notebook-server-rstudio-tests:
+	PYTHONPATH=${PYTHONPATH} \
+	python notebook_servers/notebook_server_rstudio_tests_runner.py
