@@ -84,6 +84,14 @@ workflows:
       - components/crud-web-apps/common/backend/*
       - components/crud-web-apps/tensorboards/*
     kwargs: {}
+  # Run build test for notebook-server-jupyter-tensorflow OCI images
+  - py_func: kubeflow.kubeflow.ci.notebook_servers.notebook_server_jupyter_tensorflow_tests.create_workflow
+    name: nb-j-tf
+    job_types:
+      - presubmit
+    include_dirs:
+      - components/example-notebook-servers/jupyter-tensorflow/*
+    kwargs: {}
 #######################################
 # Postsubmit jobs
 #######################################
@@ -156,4 +164,12 @@ workflows:
     include_dirs:
       - components/common/*
       - components/tensorboard-controller/*
+    kwargs: {}
+  # Create and push notebook-server-jupyter-tensorflow OCI images to ECR
+  - py_func: kubeflow.kubeflow.cd.notebook_servers.notebook_server_jupyter_tensorflow.create_workflow
+    name: nb-j-tf
+    job_types:
+      - postsubmit
+    include_dirs:
+      - components/example-notebook-servers/jupyter-tensorflow/*
     kwargs: {}
