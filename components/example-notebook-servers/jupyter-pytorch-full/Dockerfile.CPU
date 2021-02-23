@@ -1,0 +1,6 @@
+FROM public.ecr.aws/j1r0q0g6/notebooks/notebook-servers/jupyter-pytorch:master-5d25ee38
+
+COPY requirements.txt .
+RUN python3 -m pip install -r \
+    requirements.txt --quiet --no-cache-dir \
+    && rm -f requirements.txt

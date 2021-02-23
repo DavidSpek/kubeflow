@@ -77,3 +77,12 @@ check-local-tensorboard-controller-kaniko-build:
 check-prod-tensorboard-controller-kaniko-build:
 	@PYTHONPATH=${PYTHONPATH} \
 	python tensorboard_controller_runner.py
+
+check-local-nb-jupyter-pytorch-full-kaniko-build:
+	@PYTHONPATH=${PYTHONPATH} \
+	LOCAL_TESTING=True \
+	python notebook_servers/notebook_server_jupyter_pytorch_full_runner.py
+
+check-prod-nb-jupyter-pytorch-full-kaniko-build:
+	@PYTHONPATH=${PYTHONPATH} \
+	python notebook_servers/notebook_server_jupyter_pytorch_full_runner.py
