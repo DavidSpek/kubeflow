@@ -11,3 +11,5 @@ ACCESS_MANAGEMENT_IMAGE = "%s/access-management" % AWS_REGISTRY
 PROFILE_CONTROLLER_IMAGE = "%s/profile-controller" % AWS_REGISTRY
 NOTEBOOK_CONTROLLER_IMAGE = "%s/notebook-controller" % AWS_REGISTRY
 TENSORBOARD_CONTROLLER_IMAGE = "%s/tensorboard-controller" % AWS_REGISTRY
+
+NOTEBOOK_SERVER_CODESERVER = "%s/notebook-servers/codeserver" % AWS_REGISTRY
