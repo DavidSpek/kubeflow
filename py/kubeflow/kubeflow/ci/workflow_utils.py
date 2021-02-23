@@ -1,5 +1,7 @@
 import logging
 import os
+import string
+import random
 
 from kubeflow.testing import argo_build_util
 
@@ -125,7 +127,7 @@ class ArgoTestBuilder:
 
         return workflow
 
-    def build_task_template(self):
+    def build_task_template(self, mem_override=None, deadline_override=None):
         """Return a template for all the tasks"""
         volume_mounts = [{
             "mountPath": "/mnt/test-data-volume",
@@ -136,9 +138,15 @@ class ArgoTestBuilder:
             volume_mounts.append(DOCKER_CONFIG_MOUNT)
 
         image = AWS_WORKER_IMAGE
+        mem_lim = "4Gi"
+        if mem_override:
+            mem_lim = mem_override
+        active_deadline_sec=3000
+        if deadline_override:
+            active_deadline_sec = deadline_override
 
         task_template = {
-            "activeDeadlineSeconds": 3000,
+            "activeDeadlineSeconds": active_deadline_sec,
             "container": {
                 "command": [],
                 "env": [],
@@ -148,7 +156,7 @@ class ArgoTestBuilder:
                 "resources": {
                     "limits": {
                         "cpu": "4",
-                        "memory": "4Gi"
+                        "memory": mem_lim
                     },
                     "requests": {
                         "cpu": "1",
@@ -200,6 +208,8 @@ class ArgoTestBuilder:
         extend the code.
         """
         kaniko = argo_build_util.deep_copy(task_template)
+        # for shurt UUID generation
+        alphabet = string.ascii_lowercase + string.digits
 
         # append the tag base-commit[0:7]
         if ":" not in destination:
@@ -207,7 +217,8 @@ class ArgoTestBuilder:
             base = os.getenv("PULL_BASE_REF", "master")
             destination += ":%s-%s" % (base, sha[0:8])
 
-        kaniko["name"] = "kaniko-build-push"
+        # add short UUID to step name to ensure it is unique
+        kaniko["name"] = "kaniko-build-push-" + ''.join(random.choices(alphabet, k=8))
         kaniko["container"]["image"] = "gcr.io/kaniko-project/executor:v1.5.0"
         kaniko["container"]["command"] = ["/kaniko/executor"]
         kaniko["container"]["args"] = ["--dockerfile=%s" % dockerfile,

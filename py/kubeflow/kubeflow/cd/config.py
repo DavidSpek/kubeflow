@@ -11,3 +11,6 @@ ACCESS_MANAGEMENT_IMAGE = "%s/access-management" % AWS_REGISTRY
 PROFILE_CONTROLLER_IMAGE = "%s/profile-controller" % AWS_REGISTRY
 NOTEBOOK_CONTROLLER_IMAGE = "%s/notebook-controller" % AWS_REGISTRY
 TENSORBOARD_CONTROLLER_IMAGE = "%s/tensorboard-controller" % AWS_REGISTRY
+
+NOTEBOOK_SERVER_JUPYTER_TENSORFLOW_FULL = "%s/notebook-servers/jupyter-tensorflow-full" % AWS_REGISTRY
+NOTEBOOK_SERVER_JUPYTER_TENSORFLOW_CUDA_FULL = "%s/notebook-servers/jupyter-tensorflow-cuda-full" % AWS_REGISTRY
