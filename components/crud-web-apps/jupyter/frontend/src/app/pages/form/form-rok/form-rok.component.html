@@ -12,8 +12,10 @@
 
         <app-form-image
           [parentForm]="formCtrl"
-          [images]="config?.image?.options"
-          [readonly]="config?.image?.readOnly"
+          [jupyterImages]="config?.jupyterImage?.options"
+          [vscodeImages]="config?.vsCodeImage?.options"
+          [rstudioImages]="config?.rStudioImage?.options"
+          [readonly]="config?.jupyterImage?.readOnly"
         ></app-form-image>
 
         <app-form-cpu-ram [parentForm]="formCtrl"></app-form-cpu-ram>

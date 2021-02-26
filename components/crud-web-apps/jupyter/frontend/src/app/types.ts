@@ -39,6 +39,9 @@ export interface NotebookFormObject {
   imagePullPolicy: string;
   customImage?: string;
   customImageCheck: boolean;
+  useRootURL: boolean;
+  setRstudioPathHeader: boolean;
+  serverType?: string;
   cpu: number | string;
   memory: number | string;
   gpus: GPU;
@@ -130,7 +133,19 @@ export interface ConfigVolume {
 }
 
 export interface Config {
-  image?: {
+  jupyterImage?: {
+    value: string;
+    options: string[];
+    readOnly?: boolean;
+  };
+
+  vsCodeImage?: {
+    value: string;
+    options: string[];
+    readOnly?: boolean;
+  };
+
+  rStudioImage?: {
     value: string;
     options: string[];
     readOnly?: boolean;
@@ -138,6 +153,16 @@ export interface Config {
 
   imagePullPolicy?: {
     value: string;
+    readOnly?: boolean;
+  };
+
+  useRootURL?: {
+    value: boolean;
+    readOnly?: boolean;
+  };
+
+  setRstudioPathHeader?: {
+    value: boolean;
     readOnly?: boolean;
   };
 

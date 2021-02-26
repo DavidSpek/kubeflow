@@ -109,6 +109,29 @@ export class FormDefaultComponent implements OnInit, OnDestroy {
       notebook.image = notebook.customImage;
     }
 
+    // Set notebook image from jupyterImage
+    if (notebook.jupyterImage) {
+      notebook.image = notebook.jupyterImage;
+      delete notebook.jupyterImage;
+    }
+
+    // Set notebook image from vsCodeImage
+    if (notebook.vsCodeImage) {
+      notebook.image = notebook.vsCodeImage;
+      delete notebook.vsCodeImage;
+    }
+
+    // Set notebook image from rStudioImage
+    if (notebook.rStudioImage) {
+      notebook.image = notebook.rStudioImage;
+      delete notebook.rStudioImage;
+    }
+
+    // Ensure CPU input is a string
+    if (typeof notebook.cpu === 'number') {
+      notebook.cpu = notebook.cpu.toString();
+    }
+
     // Add Gi to all sizes
     notebook.memory = notebook.memory.toString() + 'Gi';
 

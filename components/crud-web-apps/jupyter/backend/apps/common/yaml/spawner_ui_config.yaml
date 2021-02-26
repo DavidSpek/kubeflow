@@ -15,7 +15,7 @@
 # Note that some values can be templated. Such values are the names of the
 # Volumes as well as their StorageClass
 spawnerFormDefaults:
-  image:
+  jupyterImage:
     # The container Image for the user's Jupyter Notebook
     # If readonly, this value must be a member of the list below
     value: gcr.io/kubeflow-images-public/tensorflow-1.13.1-notebook-cpu:v0.5.0
@@ -44,6 +44,26 @@ spawnerFormDefaults:
     # By default, custom container Images are allowed
     # Uncomment the following line to only enable standard container Images
     readOnly: false
+  vsCodeImage:
+    # The container Image for the user's VS-Code Server
+    # If readonly, this value must be a member of the list below
+    value: davidspek/kubeflow-ubuntu-code-server-experimental:0.6-no-apache
+    # The list of available standard container Images
+    options:
+      - davidspek/kubeflow-ubuntu-code-server-experimental:0.6-no-apache
+    # By default, custom container Images are allowed
+    # Uncomment the following line to only enable standard container Images
+    readOnly: false
+  rStudioImage:
+    # The container Image for the user's R-Studio Server
+    # If readonly, this value must be a member of the list below
+    value: davidspek/kubeflow-ubuntu-rstudio-experimental:0.21-no-apache
+    # The list of available standard container Images
+    options:
+      - davidspek/kubeflow-ubuntu-rstudio-experimental:0.21-no-apache
+    # By default, custom container Images are allowed
+    # Uncomment the following line to only enable standard container Images
+    readOnly: false
   imagePullPolicy:
     # Supported values: Always, IfNotPresent, Never
     value: IfNotPresent
@@ -55,6 +75,14 @@ spawnerFormDefaults:
   memory:
     # Memory for user's Notebook
     value: 1.0Gi
+    readOnly: false
+  useRootURL:
+    # Use root URL during Istio rewrite
+    value: false
+    readOnly: false
+  setRstudioPathHeader:
+    # Set the X-RStudio-Root-Path request header to NB_PREFIX
+    value: false
     readOnly: false
   environment:
     value: {}
