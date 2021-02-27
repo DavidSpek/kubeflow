@@ -110,22 +110,22 @@ export class FormDefaultComponent implements OnInit, OnDestroy {
     }
 
     // Set notebook image from jupyterImage
-    if (notebook.jupyterImage) {
+    if (notebook.serverType === 'jupyter') {
       notebook.image = notebook.jupyterImage;
       delete notebook.jupyterImage;
-    }
-
-    // Set notebook image from vsCodeImage
-    if (notebook.vsCodeImage) {
-      notebook.image = notebook.vsCodeImage;
       delete notebook.vsCodeImage;
+      delete notebook.rStudioImage;
+    } else if (notebook.serverType === 'vs-code') {
+      notebook.image = notebook.vsCodeImage;
+      delete notebook.jupyterImage;
+      delete notebook.vsCodeImage;
+      delete notebook.rStudioImage;
       // Set useRootURL to true for Istio rewrite
       notebook.useRootURL = true;
-    }
-
-    // Set notebook image from rStudioImage
-    if (notebook.rStudioImage) {
+    } else if (notebook.serverType === 'r-studio') {
       notebook.image = notebook.rStudioImage;
+      delete notebook.jupyterImage;
+      delete notebook.vsCodeImage;
       delete notebook.rStudioImage;
       // Set useRootURL to true for Istio rewrite
       notebook.useRootURL = true;
