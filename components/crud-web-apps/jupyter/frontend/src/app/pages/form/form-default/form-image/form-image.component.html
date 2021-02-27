@@ -20,7 +20,7 @@
   </section>
 
   <mat-checkbox
-    *ngIf="!jupyterReadonly && vscodeReadonly && rstudioReadonly"
+    *ngIf="!jupyterReadonly && !vscodeReadonly && !rstudioReadonly"
     [formControl]="parentForm.get('customImageCheck')"
   >
     Custom Image

@@ -16,7 +16,7 @@ export function getFormDefaults(): FormGroup {
     customImageCheck: [false, []],
     useRootURL: [false, []],
     setRstudioPathHeader: [false, []],
-    serverType: ['vs-code', [Validators.required]],
+    serverType: ['jupyter', [Validators.required]],
     cpu: [1, [Validators.required]],
     memory: [1, [Validators.required]],
     gpus: fb.group({
