@@ -47,10 +47,11 @@ spawnerFormDefaults:
   vsCodeImage:
     # The container Image for the user's VS-Code Server
     # If readonly, this value must be a member of the list below
-    value: davidspek/kubeflow-ubuntu-code-server-experimental:0.6-no-apache
+    value: davidspek/kubeflow-ubuntu-code-server-experimental:0.7-no-apache
     # The list of available standard container Images
     options:
       - davidspek/kubeflow-ubuntu-code-server-experimental:0.6-no-apache
+      - davidspek/kubeflow-ubuntu-code-server-experimental:0.7-no-apache
     # By default, custom container Images are allowed
     # Uncomment the following line to only enable standard container Images
     readOnly: false

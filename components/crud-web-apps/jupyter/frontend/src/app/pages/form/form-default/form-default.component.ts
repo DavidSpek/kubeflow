@@ -107,6 +107,15 @@ export class FormDefaultComponent implements OnInit, OnDestroy {
     // Use the custom image instead
     if (notebook.customImageCheck) {
       notebook.image = notebook.customImage;
+      if (notebook.serverType == 'vs-code') {
+        // Set useRootURL to true for Istio rewrite
+        notebook.useRootURL = true;
+      } else if (notebook.serverType == 'vs-code') {
+        // Set useRootURL to true for Istio rewrite
+        notebook.useRootURL = true;
+        // Set setRstudioPathHeader to true for R-Studio
+        notebook.setRstudioPathHeader = true;
+      }
     }
 
     // Set notebook image from jupyterImage
