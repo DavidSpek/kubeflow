@@ -119,12 +119,18 @@ export class FormDefaultComponent implements OnInit, OnDestroy {
     if (notebook.vsCodeImage) {
       notebook.image = notebook.vsCodeImage;
       delete notebook.vsCodeImage;
+      // Set useRootURL to true for Istio rewrite
+      notebook.useRootURL = true;
     }
 
     // Set notebook image from rStudioImage
     if (notebook.rStudioImage) {
       notebook.image = notebook.rStudioImage;
       delete notebook.rStudioImage;
+      // Set useRootURL to true for Istio rewrite
+      notebook.useRootURL = true;
+      // Set setRstudioPathHeader to true for R-Studio
+      notebook.setRstudioPathHeader = true;
     }
 
     // Ensure CPU input is a string
