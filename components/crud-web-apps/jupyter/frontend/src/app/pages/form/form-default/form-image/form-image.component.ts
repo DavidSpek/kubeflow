@@ -12,9 +12,13 @@ import {MatIconRegistry} from '@angular/material/icon';
 export class FormImageComponent implements OnInit, OnDestroy {
   @Input() parentForm: FormGroup;
   @Input() jupyterImages: string[];
+  @Input() jupyterReadonly: boolean;
   @Input() vscodeImages: string[];
+  @Input() vscodeReadonly: boolean;
   @Input() rstudioImages: string[];
-  @Input() readonly: boolean;
+  @Input() rstudioReadonly: boolean;
+  @Input() rooturlReadonly: boolean;
+  @Input() rstudioHeaderReadonly: boolean;
   @Input() serverType: string;
 
   subs = new Subscription();
@@ -32,22 +36,34 @@ export class FormImageComponent implements OnInit, OnDestroy {
         if (check) {
           this.parentForm.get('customImage').setValidators(Validators.required);
           this.parentForm.get('jupyterImage').setValidators([]);
-        } else {
-          this.parentForm.get('customImage').setValidators([]);
-          this.parentForm.get('jupyterImage').setValidators([]);
+          this.parentForm.get('vsCodeImage').setValidators([]);
+          this.parentForm.get('rStudioImage').setValidators([]);
         }
-
-        if (this.parentForm.value.serverType === "vs-code") {
-          this.parentForm.value.useRootURL == "true";
-          this.parentForm.get('jupyterImage').setValidators([]);
-          this.parentForm.get('rstudioImage').setValidators([]);
-        }
+        this.parentForm.get('serverType').valueChanges.subscribe(selection => {
+          if (selection === "jupyter") {
+            this.parentForm.get('customImage').setValidators([]);
+            this.parentForm.get('jupyterImage').setValidators(Validators.required);
+            this.parentForm.get('vsCodeImage').setValidators([]);
+            this.parentForm.get('rStudioImage').setValidators([]);
+          } else if (selection === "vs-code") {
+            this.parentForm.get('customImage').setValidators([]);
+            this.parentForm.get('jupyterImage').setValidators([]);
+            this.parentForm.get('vsCodeImage').setValidators(Validators.required);
+            this.parentForm.get('rStudioImage').setValidators([]);
+          } else if (selection === "r-studio") {
+            this.parentForm.get('customImage').setValidators([]);
+            this.parentForm.get('jupyterImage').setValidators([]);
+            this.parentForm.get('vsCodeImage').setValidators([]);
+            this.parentForm.get('rStudioImage').setValidators(Validators.required);
+          }
+          this.parentForm.get('jupyterImage').updateValueAndValidity();
+          this.parentForm.get('vsCodeImage').updateValueAndValidity();
+          this.parentForm.get('rStudioImage').updateValueAndValidity();
+          // this.parentForm.get('serverType').updateValueAndValidity();
+          
+        })
 
         this.parentForm.get('customImage').updateValueAndValidity();
-        this.parentForm.get('jupyterImage').updateValueAndValidity();
-        this.parentForm.get('vscodeImage').updateValueAndValidity();
-        this.parentForm.get('rstudioImage').updateValueAndValidity();
-        this.parentForm.get('serverType').updateValueAndValidity();
         this.parentForm.get('useRootURL').updateValueAndValidity();
         this.parentForm.get('setRstudioPathHeader').updateValueAndValidity();
       }),

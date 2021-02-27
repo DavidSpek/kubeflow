@@ -13,9 +13,13 @@
         <app-form-image
           [parentForm]="formCtrl"
           [jupyterImages]="config?.jupyterImage?.options"
+          [jupyterReadonly]="config?.jupyterImage?.readOnly"
           [vscodeImages]="config?.vsCodeImage?.options"
+          [vscodeReadonly]="config?.vsCodeImage?.readOnly"
           [rstudioImages]="config?.rStudioImage?.options"
-          [readonly]="config?.jupyterImage?.readOnly"
+          [rstudioReadonly]="config?.rStudioImage?.readOnly"
+          [rooturlReadonly]="config?.useRootURL.readOnly"
+          [rstudioHeaderReadonly]="config?.setRstudioPathHeader.readOnly"
         ></app-form-image>
 
         <app-form-cpu-ram [parentForm]="formCtrl"></app-form-cpu-ram>

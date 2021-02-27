@@ -36,6 +36,9 @@ export interface NotebookFormObject {
   name: string;
   namespace: string;
   image: string;
+  jupyterImage: string;
+  vsCodeImage: string;
+  rStudioImage: string;
   imagePullPolicy: string;
   customImage?: string;
   customImageCheck: boolean;

@@ -20,7 +20,7 @@
   </section>
 
   <mat-checkbox
-    *ngIf="!readonly"
+    *ngIf="!jupyterReadonly && vscodeReadonly && rstudioReadonly"
     [formControl]="parentForm.get('customImageCheck')"
   >
     Custom Image
@@ -106,13 +106,13 @@ appearance="outline"
         </mat-select>
       </mat-form-field>
       <mat-checkbox class="column" appearance="outline"
-        *ngIf="!readonly"
+        *ngIf="!rooturlReadonly"
         [formControl]="parentForm.get('useRootURL')"
       >
         Use root URL
       </mat-checkbox>
       <mat-checkbox class="column" appearance="outline"
-        *ngIf="!readonly"
+        *ngIf="!rstudioHeaderReadonly"
         [formControl]="parentForm.get('setRstudioPathHeader')"
       >
         Set R-Studio Root-Path request header location
