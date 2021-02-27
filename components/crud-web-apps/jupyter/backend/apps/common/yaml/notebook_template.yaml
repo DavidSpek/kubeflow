@@ -8,6 +8,7 @@ metadata:
   annotations:
     use-root-url: ""
     set-rstudio-path-header: ""
+    server-type: ""
 spec:
   template:
     spec:

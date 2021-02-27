@@ -143,6 +143,11 @@ def set_notebook_root_url_rewrite(notebook, body, defaults):
         notebook_annotations["use-root-url"] = "false"
 
 
+def set_server_type(notebook, body, defaults):
+    notebook_annotations = notebook["metadata"]["annotations"]
+    notebook_annotations["server-type"] = get_form_value(body, defaults, "serverType")
+
+
 def set_rstudio_request_header(notebook, body, defaults):
     notebook_annotations = notebook["metadata"]["annotations"]
     if get_form_value(body, defaults, "setRstudioPathHeader"):
