@@ -116,31 +116,28 @@ export class FormDefaultComponent implements OnInit, OnDestroy {
         // Set setRstudioPathHeader to true for R-Studio
         notebook.setRstudioPathHeader = true;
       }
-    }
-
-    // Set notebook image from jupyterImage
-    if (notebook.serverType === 'jupyter') {
-      notebook.image = notebook.jupyterImage;
-      delete notebook.jupyterImage;
-      delete notebook.vsCodeImage;
-      delete notebook.rStudioImage;
-    } else if (notebook.serverType === 'vs-code') {
-      notebook.image = notebook.vsCodeImage;
-      delete notebook.jupyterImage;
-      delete notebook.vsCodeImage;
-      delete notebook.rStudioImage;
-      // Set useRootURL to true for Istio rewrite
-      notebook.useRootURL = true;
-    } else if (notebook.serverType === 'r-studio') {
-      notebook.image = notebook.rStudioImage;
-      delete notebook.jupyterImage;
-      delete notebook.vsCodeImage;
-      delete notebook.rStudioImage;
-      // Set useRootURL to true for Istio rewrite
-      notebook.useRootURL = true;
-      // Set setRstudioPathHeader to true for R-Studio
-      notebook.setRstudioPathHeader = true;
-    }
+    } else if (notebook.serverType === 'jupyter') { // Set notebook image from jupyterImage
+        notebook.image = notebook.jupyterImage;
+        delete notebook.jupyterImage;
+        delete notebook.vsCodeImage;
+        delete notebook.rStudioImage;
+      } else if (notebook.serverType === 'vs-code') { // Set notebook image from vsCodeImage
+        notebook.image = notebook.vsCodeImage;
+        delete notebook.jupyterImage;
+        delete notebook.vsCodeImage;
+        delete notebook.rStudioImage;
+        // Set useRootURL to true for Istio rewrite
+        notebook.useRootURL = true;
+      } else if (notebook.serverType === 'r-studio') { // Set notebook image from rStudioImage
+        notebook.image = notebook.rStudioImage;
+        delete notebook.jupyterImage;
+        delete notebook.vsCodeImage;
+        delete notebook.rStudioImage;
+        // Set useRootURL to true for Istio rewrite
+        notebook.useRootURL = true;
+        // Set setRstudioPathHeader to true for R-Studio
+        notebook.setRstudioPathHeader = true;
+      }
 
     // Ensure CPU input is a string
     if (typeof notebook.cpu === 'number') {
