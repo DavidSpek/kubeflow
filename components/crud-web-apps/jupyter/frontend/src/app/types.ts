@@ -11,6 +11,7 @@ export interface JWABackendResponse extends BackendResponse {
 export interface NotebookResponseObject {
   name: string;
   namespace: string;
+  serverType: string;
   status: Status;
   reason: string;
   age: string;
@@ -44,7 +45,7 @@ export interface NotebookFormObject {
   customImageCheck: boolean;
   useRootURL: boolean;
   setRstudioPathHeader: boolean;
-  serverType?: string;
+  serverType: string;
   cpu: number | string;
   memory: number | string;
   gpus: GPU;
