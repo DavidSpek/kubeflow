@@ -110,7 +110,7 @@ export class FormDefaultComponent implements OnInit, OnDestroy {
       if (notebook.serverType == 'vs-code') {
         // Set useRootURL to true for Istio rewrite
         notebook.useRootURL = true;
-      } else if (notebook.serverType == 'vs-code') {
+      } else if (notebook.serverType == 'r-studio') {
         // Set useRootURL to true for Istio rewrite
         notebook.useRootURL = true;
         // Set setRstudioPathHeader to true for R-Studio
