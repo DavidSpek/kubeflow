@@ -135,25 +135,23 @@ def set_notebook_image_pull_policy(notebook, body, defaults):
     )
 
 
-def set_notebook_root_url_rewrite(notebook, body, defaults):
+def set_notebook_base_uri(notebook, body, defaults):
     notebook_annotations = notebook["metadata"]["annotations"]
-    if get_form_value(body, defaults, "useRootURL"):
-        notebook_annotations["use-root-url"] = "true"
-    else:
-        notebook_annotations["use-root-url"] = "false"
+    base_uri = get_form_value(body, defaults, "baseURI")
+    if base_uri:
+        notebook_annotations["base-uri"] = base_uri
+
+
+def set_request_headers(notebook, body, defaults):
+    notebook_annotations = notebook["metadata"]["annotations"]
+    request_headers = get_form_value(body, defaults, "requestHeaders")
+    if request_headers:
+        notebook_annotations["request-headers"] = request_headers
 
 
 def set_server_type(notebook, body, defaults):
     notebook_annotations = notebook["metadata"]["annotations"]
     notebook_annotations["server-type"] = get_form_value(body, defaults, "serverType")
-
-
-def set_rstudio_request_header(notebook, body, defaults):
-    notebook_annotations = notebook["metadata"]["annotations"]
-    if get_form_value(body, defaults, "setRstudioPathHeader"):
-        notebook_annotations["set-rstudio-path-header"] = "true"
-    else:
-        notebook_annotations["set-rstudio-path-header"] = "false"
 
 
 def set_notebook_cpu(notebook, body, defaults):

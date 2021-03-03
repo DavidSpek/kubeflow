@@ -6,8 +6,8 @@ metadata:
   labels:
     app: {name}
   annotations:
-    use-root-url: ""
-    set-rstudio-path-header: ""
+    base-uri: ""
+    request-headers: ""
     server-type: ""
 spec:
   template:

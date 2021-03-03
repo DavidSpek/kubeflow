@@ -17,8 +17,6 @@ export class FormImageComponent implements OnInit, OnDestroy {
   @Input() vscodeReadonly: boolean;
   @Input() rstudioImages: string[];
   @Input() rstudioReadonly: boolean;
-  @Input() rooturlReadonly: boolean;
-  @Input() rstudioHeaderReadonly: boolean;
 
   subs = new Subscription();
 
@@ -62,8 +60,8 @@ export class FormImageComponent implements OnInit, OnDestroy {
         })
         this.parentForm.get('customImage').updateValueAndValidity();
         this.parentForm.get('serverType').updateValueAndValidity();
-        this.parentForm.get('useRootURL').updateValueAndValidity();
-        this.parentForm.get('setRstudioPathHeader').updateValueAndValidity();
+        this.parentForm.get('baseURI').updateValueAndValidity();
+        this.parentForm.get('requestHeaders').updateValueAndValidity();
       }),
     );
   }

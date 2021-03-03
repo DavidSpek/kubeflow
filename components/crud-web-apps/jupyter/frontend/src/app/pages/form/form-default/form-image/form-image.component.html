@@ -105,18 +105,6 @@ appearance="outline"
           <mat-option value="Never">Never</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-checkbox class="column" appearance="outline"
-        *ngIf="!rooturlReadonly"
-        [formControl]="parentForm.get('useRootURL')"
-      >
-        Use root URL
-      </mat-checkbox>
-      <mat-checkbox class="column" appearance="outline"
-        *ngIf="!rstudioHeaderReadonly"
-        [formControl]="parentForm.get('setRstudioPathHeader')"
-      >
-        Set R-Studio Root-Path request header location
-      </mat-checkbox>
     </div>
   </lib-advanced-options>
 </lib-form-section>

@@ -43,8 +43,8 @@ export interface NotebookFormObject {
   imagePullPolicy: string;
   customImage?: string;
   customImageCheck: boolean;
-  useRootURL: boolean;
-  setRstudioPathHeader: boolean;
+  baseURI: string;
+  requestHeaders: string;
   serverType: string;
   cpu: number | string;
   memory: number | string;
@@ -160,13 +160,13 @@ export interface Config {
     readOnly?: boolean;
   };
 
-  useRootURL?: {
-    value: boolean;
+  baseURI?: {
+    value: string;
     readOnly?: boolean;
   };
 
-  setRstudioPathHeader?: {
-    value: boolean;
+  requestHeaders?: {
+    value: string;
     readOnly?: boolean;
   };
 
