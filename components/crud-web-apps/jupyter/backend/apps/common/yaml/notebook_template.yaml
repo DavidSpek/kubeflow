@@ -6,8 +6,6 @@ metadata:
   labels:
     app: {name}
   annotations:
-    base-uri: ""
-    request-headers: ""
     server-type: ""
 spec:
   template:
