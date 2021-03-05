@@ -139,19 +139,19 @@ def set_notebook_base_uri(notebook, body, defaults):
     notebook_annotations = notebook["metadata"]["annotations"]
     base_uri = get_form_value(body, defaults, "baseURI")
     if base_uri:
-        notebook_annotations["base-uri"] = base_uri
+        notebook_annotations["notebooks.kubeflow.org/base-uri"] = base_uri
 
 
 def set_request_headers(notebook, body, defaults):
     notebook_annotations = notebook["metadata"]["annotations"]
     request_headers = get_form_value(body, defaults, "requestHeaders")
     if request_headers:
-        notebook_annotations["request-headers"] = request_headers
+        notebook_annotations["notebooks.kubeflow.org/request-headers"] = request_headers
 
 
 def set_server_type(notebook, body, defaults):
     notebook_annotations = notebook["metadata"]["annotations"]
-    notebook_annotations["server-type"] = get_form_value(body, defaults, "serverType")
+    notebook_annotations["notebooks.kubeflow.org/server-type"] = get_form_value(body, defaults, "serverType")
 
 
 def set_notebook_cpu(notebook, body, defaults):

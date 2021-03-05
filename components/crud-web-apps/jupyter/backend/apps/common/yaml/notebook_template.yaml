@@ -6,7 +6,7 @@ metadata:
   labels:
     app: {name}
   annotations:
-    server-type: ""
+    notebooks.kubeflow.org/server-type: ""
 spec:
   template:
     spec:

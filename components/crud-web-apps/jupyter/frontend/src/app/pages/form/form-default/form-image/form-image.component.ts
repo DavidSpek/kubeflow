@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-form-image',
@@ -23,7 +23,7 @@ export class FormImageComponent implements OnInit, OnDestroy {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('jupyterlab', sanitizer.bypassSecurityTrustResourceUrl('static/assets/jupyterlab-wordmark.svg'));
     iconRegistry.addSvgIcon('vs-code', sanitizer.bypassSecurityTrustResourceUrl('static/assets/visual-studio-code.svg'));
-    iconRegistry.addSvgIcon('r-studio', sanitizer.bypassSecurityTrustResourceUrl('static/assets/RStudio-Logo-flat.svg'));
+    iconRegistry.addSvgIcon('rstudio', sanitizer.bypassSecurityTrustResourceUrl('static/assets/rstudio.svg'));
   }
 
   ngOnInit() {
@@ -33,29 +33,29 @@ export class FormImageComponent implements OnInit, OnDestroy {
         if (check) {
           this.parentForm.get('customImage').setValidators(Validators.required);
           this.parentForm.get('jupyterImage').setValidators([]);
-          this.parentForm.get('vsCodeImage').setValidators([]);
-          this.parentForm.get('rStudioImage').setValidators([]);
+          this.parentForm.get('vscodeImage').setValidators([]);
+          this.parentForm.get('rstudioImage').setValidators([]);
         }
         this.parentForm.get('serverType').valueChanges.subscribe(selection => {
           if (selection === "jupyter") {
             this.parentForm.get('customImage').setValidators([]);
             this.parentForm.get('jupyterImage').setValidators(Validators.required);
-            this.parentForm.get('vsCodeImage').setValidators([]);
-            this.parentForm.get('rStudioImage').setValidators([]);
+            this.parentForm.get('vscodeImage').setValidators([]);
+            this.parentForm.get('rstudioImage').setValidators([]);
           } else if (selection === "vs-code") {
             this.parentForm.get('customImage').setValidators([]);
             this.parentForm.get('jupyterImage').setValidators([]);
-            this.parentForm.get('vsCodeImage').setValidators(Validators.required);
-            this.parentForm.get('rStudioImage').setValidators([]);
-          } else if (selection === "r-studio") {
+            this.parentForm.get('vscodeImage').setValidators(Validators.required);
+            this.parentForm.get('rstudioImage').setValidators([]);
+          } else if (selection === "rstudio") {
             this.parentForm.get('customImage').setValidators([]);
             this.parentForm.get('jupyterImage').setValidators([]);
-            this.parentForm.get('vsCodeImage').setValidators([]);
-            this.parentForm.get('rStudioImage').setValidators(Validators.required);
+            this.parentForm.get('vscodeImage').setValidators([]);
+            this.parentForm.get('rstudioImage').setValidators(Validators.required);
           }
           this.parentForm.get('jupyterImage').updateValueAndValidity();
-          this.parentForm.get('vsCodeImage').updateValueAndValidity();
-          this.parentForm.get('rStudioImage').updateValueAndValidity();
+          this.parentForm.get('vscodeImage').updateValueAndValidity();
+          this.parentForm.get('rstudioImage').updateValueAndValidity();
           
         })
         this.parentForm.get('customImage').updateValueAndValidity();

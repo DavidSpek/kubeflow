@@ -13,8 +13,8 @@
       <mat-button-toggle value="vs-code" aria-label="Use VS-Code based server">
         <mat-icon style="height:72px !important; width:200px !important;" svgIcon="vs-code"></mat-icon>
       </mat-button-toggle>
-      <mat-button-toggle value="r-studio" aria-label="Use R-Studio based server">
-        <mat-icon style="height:72px !important; width:200px !important;" svgIcon="r-studio"></mat-icon>
+      <mat-button-toggle value="rstudio" aria-label="Use RStudio based server">
+        <mat-icon style="height:72px !important; width:200px !important;" svgIcon="rstudio"></mat-icon>
       </mat-button-toggle>
     </mat-button-toggle-group>
   </section>
@@ -53,7 +53,7 @@
   <mat-label>Image</mat-label>
   <mat-select
     placeholder="Docker Image"
-    [formControl]="parentForm.get('vsCodeImage')"
+    [formControl]="parentForm.get('vscodeImage')"
   >
     <mat-option *ngFor="let img of vscodeImages" [value]="img">
       {{ img }}
@@ -65,13 +65,13 @@
 <mat-form-field
 class="wide"
 appearance="outline"
-*ngIf="!parentForm?.value.customImageCheck && parentForm?.value.serverType === 'r-studio'"
+*ngIf="!parentForm?.value.customImageCheck && parentForm?.value.serverType === 'rstudio'"
 >
 <!-- If readonly, then make it an input element instead of select -->
 <mat-label>Image</mat-label>
 <mat-select
   placeholder="Docker Image"
-  [formControl]="parentForm.get('rStudioImage')"
+  [formControl]="parentForm.get('rstudioImage')"
 >
   <mat-option *ngFor="let img of rstudioImages" [value]="img">
     {{ img }}

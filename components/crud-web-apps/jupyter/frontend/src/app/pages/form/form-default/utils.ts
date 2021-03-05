@@ -9,8 +9,8 @@ export function getFormDefaults(): FormGroup {
     name: ['', [Validators.required]],
     namespace: ['', [Validators.required]],
     jupyterImage: ['', [Validators.required]],
-    vsCodeImage: ['', [Validators.required]],
-    rStudioImage: ['', [Validators.required]],
+    vscodeImage: ['', [Validators.required]],
+    rstudioImage: ['', [Validators.required]],
     imagePullPolicy: ['IfNotPresent', [Validators.required]],
     customImage: ['', []],
     customImageCheck: [false, []],
@@ -155,14 +155,14 @@ export function initFormControls(formCtrl: FormGroup, config: Config) {
     formCtrl.controls.jupyterImage.disable();
   }
 
-  formCtrl.controls.vsCodeImage.setValue(config.vsCodeImage.value);
-  if (config.vsCodeImage.readOnly) {
-    formCtrl.controls.vsCodeImage.disable();
+  formCtrl.controls.vscodeImage.setValue(config.vscodeImage.value);
+  if (config.vscodeImage.readOnly) {
+    formCtrl.controls.vscodeImage.disable();
   }
 
-  formCtrl.controls.rStudioImage.setValue(config.rStudioImage.value);
-  if (config.rStudioImage.readOnly) {
-    formCtrl.controls.rStudioImage.disable();
+  formCtrl.controls.rstudioImage.setValue(config.rstudioImage.value);
+  if (config.rstudioImage.readOnly) {
+    formCtrl.controls.rstudioImage.disable();
   }
 
   formCtrl.controls.imagePullPolicy.setValue(config.imagePullPolicy.value);

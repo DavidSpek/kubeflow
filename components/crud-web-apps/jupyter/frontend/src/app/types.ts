@@ -38,8 +38,8 @@ export interface NotebookFormObject {
   namespace: string;
   image: string;
   jupyterImage: string;
-  vsCodeImage: string;
-  rStudioImage: string;
+  vscodeImage: string;
+  rstudioImage: string;
   imagePullPolicy: string;
   customImage?: string;
   customImageCheck: boolean;
@@ -143,13 +143,13 @@ export interface Config {
     readOnly?: boolean;
   };
 
-  vsCodeImage?: {
+  vscodeImage?: {
     value: string;
     options: string[];
     readOnly?: boolean;
   };
 
-  rStudioImage?: {
+  rstudioImage?: {
     value: string;
     options: string[];
     readOnly?: boolean;

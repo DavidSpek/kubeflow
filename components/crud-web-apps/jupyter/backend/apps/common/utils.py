@@ -39,6 +39,18 @@ def load_spawner_ui_config():
 
         if config_dict is not None:
             log.info("Using config file: %s", config)
+            VS_CODE_LOGO_VALUE = config_dict["spawnerFormDefaults"]["vscodeImage"].get("logo")
+            RSTUDIO_LOGO_VALUE = config_dict["spawnerFormDefaults"]["rstudioImage"].get("logo")
+            if VS_CODE_LOGO_VALUE:
+                VS_LOGO_PATH = os.path.join(FILE_ABS_PATH, '../default/static/assets/visual-studio-code.svg')
+                if not os.path.exists(VS_LOGO_PATH):
+                    with open(VS_LOGO_PATH, "w") as f:
+                        f.write(VS_CODE_LOGO_VALUE)
+            if RSTUDIO_LOGO_VALUE:
+                RSTUDIO_LOGO_PATH = os.path.join(FILE_ABS_PATH, '../default/static/assets/rstudio.svg')
+                if not os.path.exists(RSTUDIO_LOGO_PATH):
+                    with open(RSTUDIO_LOGO_PATH, "w") as f:
+                        f.write(RSTUDIO_LOGO_VALUE)
             return config_dict["spawnerFormDefaults"]
 
     log.error("Couldn't find any config file.")
@@ -121,7 +133,7 @@ def notebook_dict_from_k8s_obj(notebook):
     server_type = None
     if notebook["metadata"].get("annotations"):
         annotations = notebook["metadata"]["annotations"]
-        server_type = annotations.get("server-type")
+        server_type = annotations.get("notebooks.kubeflow.org/server-type")
 
     return {
         "name": notebook["metadata"]["name"],
