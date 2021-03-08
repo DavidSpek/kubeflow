@@ -107,54 +107,47 @@ export class FormDefaultComponent implements OnInit, OnDestroy {
     // Use the custom image instead
     if (notebook.customImageCheck) {
       // Remove unnecessary images from payloaf
-      delete notebook.jupyterImage;
-      delete notebook.vscodeImage;
-      delete notebook.rstudioImage;
+      delete notebook.imageVSCode;
+      delete notebook.imageRStudio;
       notebook.image = notebook.customImage;
       if (notebook.serverType == 'vs-code') {
         // Remove unnecessary images from payloaf
-        delete notebook.jupyterImage;
-        delete notebook.vscodeImage;
-        delete notebook.rstudioImage;
+        delete notebook.imageVSCode;
+        delete notebook.imageRStudio;
         // Set base URI to / for Istio rewrite
-        notebook.baseURI = '/';
+        notebook.httpRewriteURI = '/';
       } else if (notebook.serverType == 'rstudio') {
         // Remove unnecessary images from payloaf
-        delete notebook.jupyterImage;
-        delete notebook.vscodeImage;
-        delete notebook.rstudioImage;
+        delete notebook.imageVSCode;
+        delete notebook.imageRStudio;
         // Set base URI to / for Istio rewrite
-        notebook.baseURI = '/';
+        notebook.httpRewriteURI = '/';
         // Add X-RStudio-Root-Path header to requests for RStudio
         const headerKey = 'X-RStudio-Root-Path';
         const headerValue = '/notebook/' + notebook.namespace.toString() + '/' + notebook.name.toString() + '/';
         const rStudioHeader = headerKey.concat(': ', headerValue);
-        notebook.requestHeaders = rStudioHeader;
+        notebook.httpHeadersRequestSet = rStudioHeader;
       }
     } else if (notebook.serverType === 'jupyter') { // Set notebook image from jupyterImage
-        notebook.image = notebook.jupyterImage;
-        delete notebook.jupyterImage;
-        delete notebook.vscodeImage;
-        delete notebook.rstudioImage;
-      } else if (notebook.serverType === 'vs-code') { // Set notebook image from vsCodeImage
-        notebook.image = notebook.vscodeImage;
-        delete notebook.jupyterImage;
-        delete notebook.vscodeImage;
-        delete notebook.rstudioImage;
+        delete notebook.imageVSCode;
+        delete notebook.imageRStudio;
+      } else if (notebook.serverType === 'vs-code') { // Set notebook image from imageVSCode
+        notebook.image = notebook.imageVSCode;
+        delete notebook.imageVSCode;
+        delete notebook.imageRStudio;
         // Set base URI to / for Istio rewrite
-        notebook.baseURI = '/';
-      } else if (notebook.serverType === 'rstudio') { // Set notebook image from rStudioImage
-        notebook.image = notebook.rstudioImage;
-        delete notebook.jupyterImage;
-        delete notebook.vscodeImage;
-        delete notebook.rstudioImage;
+        notebook.httpRewriteURI = '/';
+      } else if (notebook.serverType === 'rstudio') { // Set notebook image from imageRStudio
+        notebook.image = notebook.imageRStudio;
+        delete notebook.imageVSCode;
+        delete notebook.imageRStudio;
         // Set base URI to / for Istio rewrite
-        notebook.baseURI = '/';
+        notebook.httpRewriteURI = '/';
         // Add X-RStudio-Root-Path header to requests for RStudio
         const headerKey = 'X-RStudio-Root-Path';
         const headerValue = '/notebook/' + notebook.namespace.toString() + '/' + notebook.name.toString() + '/';
         const rStudioHeader = headerKey.concat(': ', headerValue);
-        notebook.requestHeaders = rStudioHeader;
+        notebook.httpHeadersRequestSet = rStudioHeader;
       }
 
     // Ensure CPU input is a string

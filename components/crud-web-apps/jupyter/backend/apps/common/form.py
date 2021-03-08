@@ -135,18 +135,18 @@ def set_notebook_image_pull_policy(notebook, body, defaults):
     )
 
 
-def set_notebook_base_uri(notebook, body, defaults):
+def set_notebook_http_rewrite_uri(notebook, body, defaults):
     notebook_annotations = notebook["metadata"]["annotations"]
-    base_uri = get_form_value(body, defaults, "baseURI")
-    if base_uri:
-        notebook_annotations["notebooks.kubeflow.org/base-uri"] = base_uri
+    http_rewrite_uri = get_form_value(body, defaults, "httpRewriteURI")
+    if http_rewrite_uri:
+        notebook_annotations["notebooks.kubeflow.org/http-rewrite-uri"] = http_rewrite_uri
 
 
-def set_request_headers(notebook, body, defaults):
+def set_http_headers_request_set(notebook, body, defaults):
     notebook_annotations = notebook["metadata"]["annotations"]
-    request_headers = get_form_value(body, defaults, "requestHeaders")
-    if request_headers:
-        notebook_annotations["notebooks.kubeflow.org/request-headers"] = request_headers
+    http_headers_request_set = get_form_value(body, defaults, "httpHeadersRequestSet")
+    if http_headers_request_set:
+        notebook_annotations["notebooks.kubeflow.org/http-headers-request-set"] = http_headers_request_set
 
 
 def set_server_type(notebook, body, defaults):

@@ -35,9 +35,9 @@
     <mat-label>Image</mat-label>
     <mat-select
       placeholder="Docker Image"
-      [formControl]="parentForm.get('jupyterImage')"
+      [formControl]="parentForm.get('image')"
     >
-      <mat-option *ngFor="let img of jupyterImages" [value]="img">
+      <mat-option *ngFor="let img of images" [value]="img">
         {{ img }}
       </mat-option>
     </mat-select>
@@ -53,9 +53,9 @@
   <mat-label>Image</mat-label>
   <mat-select
     placeholder="Docker Image"
-    [formControl]="parentForm.get('vscodeImage')"
+    [formControl]="parentForm.get('imageVSCode')"
   >
-    <mat-option *ngFor="let img of vscodeImages" [value]="img">
+    <mat-option *ngFor="let img of imagesVSCode" [value]="img">
       {{ img }}
     </mat-option>
   </mat-select>
@@ -71,9 +71,9 @@ appearance="outline"
 <mat-label>Image</mat-label>
 <mat-select
   placeholder="Docker Image"
-  [formControl]="parentForm.get('rstudioImage')"
+  [formControl]="parentForm.get('imageRStudio')"
 >
-  <mat-option *ngFor="let img of rstudioImages" [value]="img">
+  <mat-option *ngFor="let img of imagesRStudio" [value]="img">
     {{ img }}
   </mat-option>
 </mat-select>

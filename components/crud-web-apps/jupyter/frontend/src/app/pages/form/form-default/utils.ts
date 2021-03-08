@@ -8,14 +8,14 @@ export function getFormDefaults(): FormGroup {
   return fb.group({
     name: ['', [Validators.required]],
     namespace: ['', [Validators.required]],
-    jupyterImage: ['', [Validators.required]],
-    vscodeImage: ['', [Validators.required]],
-    rstudioImage: ['', [Validators.required]],
+    image: ['', [Validators.required]],
+    imageVSCode: ['', [Validators.required]],
+    imageRStudio: ['', [Validators.required]],
     imagePullPolicy: ['IfNotPresent', [Validators.required]],
     customImage: ['', []],
     customImageCheck: [false, []],
-    baseURI: ['', []],
-    requestHeaders: ['', []],
+    httpRewriteURI: ['', []],
+    httpHeadersRequestSet: ['', []],
     serverType: ['jupyter', [Validators.required]],
     cpu: [1, [Validators.required]],
     memory: [1, [Validators.required]],
@@ -150,19 +150,19 @@ export function initFormControls(formCtrl: FormGroup, config: Config) {
     formCtrl.controls.memory.disable();
   }
 
-  formCtrl.controls.jupyterImage.setValue(config.jupyterImage.value);
-  if (config.jupyterImage.readOnly) {
-    formCtrl.controls.jupyterImage.disable();
+  formCtrl.controls.image.setValue(config.image.value);
+  if (config.image.readOnly) {
+    formCtrl.controls.image.disable();
   }
 
-  formCtrl.controls.vscodeImage.setValue(config.vscodeImage.value);
-  if (config.vscodeImage.readOnly) {
-    formCtrl.controls.vscodeImage.disable();
+  formCtrl.controls.imageVSCode.setValue(config.imageVSCode.value);
+  if (config.imageVSCode.readOnly) {
+    formCtrl.controls.imageVSCode.disable();
   }
 
-  formCtrl.controls.rstudioImage.setValue(config.rstudioImage.value);
-  if (config.rstudioImage.readOnly) {
-    formCtrl.controls.rstudioImage.disable();
+  formCtrl.controls.imageRStudio.setValue(config.imageRStudio.value);
+  if (config.imageRStudio.readOnly) {
+    formCtrl.controls.imageRStudio.disable();
   }
 
   formCtrl.controls.imagePullPolicy.setValue(config.imagePullPolicy.value);

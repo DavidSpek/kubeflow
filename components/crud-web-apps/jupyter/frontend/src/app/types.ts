@@ -37,14 +37,13 @@ export interface NotebookFormObject {
   name: string;
   namespace: string;
   image: string;
-  jupyterImage: string;
-  vscodeImage: string;
-  rstudioImage: string;
+  imageVSCode: string;
+  imageRStudio: string;
   imagePullPolicy: string;
   customImage?: string;
   customImageCheck: boolean;
-  baseURI: string;
-  requestHeaders: string;
+  httpRewriteURI: string;
+  httpHeadersRequestSet: string;
   serverType: string;
   cpu: number | string;
   memory: number | string;
@@ -137,19 +136,19 @@ export interface ConfigVolume {
 }
 
 export interface Config {
-  jupyterImage?: {
+  image?: {
     value: string;
     options: string[];
     readOnly?: boolean;
   };
 
-  vscodeImage?: {
+  imageVSCode?: {
     value: string;
     options: string[];
     readOnly?: boolean;
   };
 
-  rstudioImage?: {
+  imageRStudio?: {
     value: string;
     options: string[];
     readOnly?: boolean;
@@ -160,12 +159,12 @@ export interface Config {
     readOnly?: boolean;
   };
 
-  baseURI?: {
+  httpRewriteURI?: {
     value: string;
     readOnly?: boolean;
   };
 
-  requestHeaders?: {
+  httpHeadersRequestSet?: {
     value: string;
     readOnly?: boolean;
   };

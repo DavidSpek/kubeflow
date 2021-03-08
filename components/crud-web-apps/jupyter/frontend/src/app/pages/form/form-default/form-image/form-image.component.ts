@@ -11,11 +11,11 @@ import { MatIconRegistry } from '@angular/material/icon';
 })
 export class FormImageComponent implements OnInit, OnDestroy {
   @Input() parentForm: FormGroup;
-  @Input() jupyterImages: string[];
+  @Input() images: string[];
   @Input() jupyterReadonly: boolean;
-  @Input() vscodeImages: string[];
+  @Input() imagesVSCode: string[];
   @Input() vscodeReadonly: boolean;
-  @Input() rstudioImages: string[];
+  @Input() imagesRStudio: string[];
   @Input() rstudioReadonly: boolean;
 
   subs = new Subscription();
@@ -32,36 +32,36 @@ export class FormImageComponent implements OnInit, OnDestroy {
         // Make sure that the use will insert and Image value
         if (check) {
           this.parentForm.get('customImage').setValidators(Validators.required);
-          this.parentForm.get('jupyterImage').setValidators([]);
-          this.parentForm.get('vscodeImage').setValidators([]);
-          this.parentForm.get('rstudioImage').setValidators([]);
+          this.parentForm.get('image').setValidators([]);
+          this.parentForm.get('imageVSCode').setValidators([]);
+          this.parentForm.get('imageRStudio').setValidators([]);
         }
         this.parentForm.get('serverType').valueChanges.subscribe(selection => {
           if (selection === "jupyter") {
             this.parentForm.get('customImage').setValidators([]);
-            this.parentForm.get('jupyterImage').setValidators(Validators.required);
-            this.parentForm.get('vscodeImage').setValidators([]);
-            this.parentForm.get('rstudioImage').setValidators([]);
+            this.parentForm.get('image').setValidators(Validators.required);
+            this.parentForm.get('imageVSCode').setValidators([]);
+            this.parentForm.get('imageRStudio').setValidators([]);
           } else if (selection === "vs-code") {
             this.parentForm.get('customImage').setValidators([]);
-            this.parentForm.get('jupyterImage').setValidators([]);
-            this.parentForm.get('vscodeImage').setValidators(Validators.required);
-            this.parentForm.get('rstudioImage').setValidators([]);
+            this.parentForm.get('image').setValidators([]);
+            this.parentForm.get('imageVSCode').setValidators(Validators.required);
+            this.parentForm.get('imageRStudio').setValidators([]);
           } else if (selection === "rstudio") {
             this.parentForm.get('customImage').setValidators([]);
-            this.parentForm.get('jupyterImage').setValidators([]);
-            this.parentForm.get('vscodeImage').setValidators([]);
-            this.parentForm.get('rstudioImage').setValidators(Validators.required);
+            this.parentForm.get('image').setValidators([]);
+            this.parentForm.get('imageVSCode').setValidators([]);
+            this.parentForm.get('imageRStudio').setValidators(Validators.required);
           }
-          this.parentForm.get('jupyterImage').updateValueAndValidity();
-          this.parentForm.get('vscodeImage').updateValueAndValidity();
-          this.parentForm.get('rstudioImage').updateValueAndValidity();
+          this.parentForm.get('image').updateValueAndValidity();
+          this.parentForm.get('imageVSCode').updateValueAndValidity();
+          this.parentForm.get('imageRStudio').updateValueAndValidity();
           
         })
         this.parentForm.get('customImage').updateValueAndValidity();
         this.parentForm.get('serverType').updateValueAndValidity();
-        this.parentForm.get('baseURI').updateValueAndValidity();
-        this.parentForm.get('requestHeaders').updateValueAndValidity();
+        this.parentForm.get('httpRewriteURI').updateValueAndValidity();
+        this.parentForm.get('httpHeadersRequestSet').updateValueAndValidity();
       }),
     );
   }

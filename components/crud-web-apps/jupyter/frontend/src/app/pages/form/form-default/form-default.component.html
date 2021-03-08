@@ -8,12 +8,12 @@
 
         <app-form-image
           [parentForm]="formCtrl"
-          [jupyterImages]="config?.jupyterImage?.options"
-          [jupyterReadonly]="config?.jupyterImage?.readOnly"
-          [vscodeImages]="config?.vscodeImage?.options"
-          [vscodeReadonly]="config?.vscodeImage?.readOnly"
-          [rstudioImages]="config?.rstudioImage?.options"
-          [rstudioReadonly]="config?.rstudioImage?.readOnly"
+          [images]="config?.image?.options"
+          [jupyterReadonly]="config?.image?.readOnly"
+          [imagesVSCode]="config?.imageVSCode?.options"
+          [vscodeReadonly]="config?.imageVSCode?.readOnly"
+          [imagesRStudio]="config?.imageRStudio?.options"
+          [rstudioReadonly]="config?.imageRStudio?.readOnly"
         ></app-form-image>
 
         <app-form-cpu-ram [parentForm]="formCtrl"></app-form-cpu-ram>

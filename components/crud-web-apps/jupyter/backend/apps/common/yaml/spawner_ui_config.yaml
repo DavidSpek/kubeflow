@@ -15,7 +15,7 @@
 # Note that some values can be templated. Such values are the names of the
 # Volumes as well as their StorageClass
 spawnerFormDefaults:
-  jupyterImage:
+  image:
     # The container Image for the user's Jupyter Notebook
     # If readonly, this value must be a member of the list below
     value: gcr.io/kubeflow-images-public/tensorflow-1.13.1-notebook-cpu:v0.5.0
@@ -44,7 +44,7 @@ spawnerFormDefaults:
     # By default, custom container Images are allowed
     # Uncomment the following line to only enable standard container Images
     readOnly: false
-  vscodeImage:
+  imageVSCode:
     # The container Image for the user's VS-Code Server
     # If readonly, this value must be a member of the list below
     value: davidspek/kubeflow-ubuntu-code-server-experimental:0.7-no-apache
@@ -56,7 +56,7 @@ spawnerFormDefaults:
     # By default, custom container Images are allowed
     # Uncomment the following line to only enable standard container Images
     readOnly: false
-  rstudioImage:
+  imageRStudio:
     # The container Image for the user's RStudio Server
     # If readonly, this value must be a member of the list below
     value: davidspek/kubeflow-ubuntu-rstudio-experimental:0.32-conda
@@ -149,14 +149,6 @@ spawnerFormDefaults:
   memory:
     # Memory for user's Notebook
     value: 1.0Gi
-    readOnly: false
-  baseURI:
-    # Base URI the application is hosted at in the container
-    value: ''
-    readOnly: false
-  requestHeaders:
-    # Change or add request headers to the notebook with Istio
-    value: ''
     readOnly: false
   environment:
     value: {}
