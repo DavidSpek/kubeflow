@@ -123,10 +123,8 @@ export class FormDefaultComponent implements OnInit, OnDestroy {
         // Set base URI to / for Istio rewrite
         notebook.httpRewriteURI = '/';
         // Add X-RStudio-Root-Path header to requests for RStudio
-        const headerKey = 'X-RStudio-Root-Path';
         const headerValue = '/notebook/' + notebook.namespace.toString() + '/' + notebook.name.toString() + '/';
-        const rStudioHeader = headerKey.concat(': ', headerValue);
-        notebook.httpHeadersRequestSet = rStudioHeader;
+        notebook.httpHeadersRequestSet = JSON.stringify({ 'X-RStudio-Root-Path': headerValue });
       }
     } else if (notebook.serverType === 'jupyter') { // Set notebook image from jupyterImage
         delete notebook.imageVSCode;
@@ -144,10 +142,8 @@ export class FormDefaultComponent implements OnInit, OnDestroy {
         // Set base URI to / for Istio rewrite
         notebook.httpRewriteURI = '/';
         // Add X-RStudio-Root-Path header to requests for RStudio
-        const headerKey = 'X-RStudio-Root-Path';
         const headerValue = '/notebook/' + notebook.namespace.toString() + '/' + notebook.name.toString() + '/';
-        const rStudioHeader = headerKey.concat(': ', headerValue);
-        notebook.httpHeadersRequestSet = rStudioHeader;
+        notebook.httpHeadersRequestSet = JSON.stringify({ 'X-RStudio-Root-Path': headerValue });
       }
 
     // Ensure CPU input is a string
